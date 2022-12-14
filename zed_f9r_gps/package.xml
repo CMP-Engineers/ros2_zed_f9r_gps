@@ -7,9 +7,15 @@
   <maintainer email="fb266@cornell.edu">Fanjun Bu</maintainer>
   <license>TODO: License declaration</license>
 
+  <exec_depend>python3-serial</exec_depend>
   <exec_depend>rclpy</exec_depend>
   <exec_depend>std_msgs</exec_depend>
   <exec_depend>sensor_msgs</exec_depend>
+
+  <!-- Python3 pip is needed to install python3-sparkfun-ublox-gps-pip and python3-spidev-pip -->
+  <exec_depend>python3-pip</exec_depend>
+  <exec_depend>python3-sparkfun-ublox-gps-pip</exec_depend>
+  <exec_depend>python3-spidev-pip</exec_depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
