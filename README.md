@@ -39,11 +39,18 @@ Reload udev rules: `sudo udevadm control --reload-rules && sudo udevadm trigger`
 
 <img src="gps_assemble.jpg" width="200">
 
-## Download ublox python package and customize
----
-Download sparkfun ublox package. (Requires Python3 and pip3, spidev.)
-```sudo pip3 install spidev```
-```sudo pip3 install sparkfun-ublox-gps```
+## Download the package and build.
+
+```
+cd [your_ros_ws]/src
+git clone https://github.com/CMP-Engineers/ros2_zed_f9r_gps.git -b cmp
+cd ..
+rosdep install --from-paths src --ignore-src --default-yes
+colcon build
+source install/setup.bash
+```
+
+## Modify ublox_gps
 
 The default package does not provide functions to parse GPS covariance matrix, but we can easily add our own.
 
@@ -62,18 +69,6 @@ def geo_cov(self):
 
 Details on ublox messages can be found [here](https://www.u-blox.com/sites/default/files/u-blox-F9-HPG-1.30_InterfaceDescription_UBX-21046737.pdf).
 
-## Download ROS 2
----
-Follow the guide [here](https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html) to install ROS 2 Foxy. 
-
-## Download the package and build.
----
-```
-cd [your_ros_ws]/src
-git clone https://github.com/FrankBu0616/ros2_zed_f9r_gps.git
-cd ..
-colcon build
-source install/setup.bash
-```
+## Running the node
 
 To start publishing data, `ros2 run zed_f9r_gps gps_publisher`.
